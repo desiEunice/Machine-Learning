@@ -4,16 +4,13 @@
 
 # Various tools for data manipulation. 
 # Z transformation function. Support the pocket version for linearly unseparatable data. 
+# Feature normalization function
 
 
 
 import numpy as np
 import math
 
-def main():
-    X = np.array([[1,2], [2,3],[3,4]])
-    Z = MyUtils.z_transform(X,2)
-    print(Z)
 
 class MyUtils:
 
@@ -65,5 +62,53 @@ class MyUtils:
         return Z
         
         
-if __name__ == '__main__':
-    main()        
+    ### Feature Normalization
+    
+    def normalize_0_1(X):
+        ''' Normalize the value of every feature into the [0,1] range, using formula: x = (x-x_min)/(x_max - x_min)
+            1) First shift all feature values to be non-negative by subtracting the min of each column 
+               if that min is negative.
+            2) Then divide each feature value by the max of the column if that max is not zero. 
+            
+            X: n x d matrix of samples, excluding the x_0 = 1 feature. X can have negative numbers.
+            return: the n x d matrix of samples where each feature value belongs to [0,1]
+        '''
+
+        n, d = X.shape
+        X_norm = X.astype('float64') # Have a copy of the data in float
+
+        for i in range(d):
+            col_min = min(X_norm[:,i])
+            col_max = max(X_norm[:,i])
+            gap = col_max - col_min
+            if gap:
+                X_norm[:,i] = (X_norm[:,i] - col_min) / gap
+            else:
+                X_norm[:,i] = 0 #X_norm[:,i] - X_norm[:,i]
+        
+        return X_norm
+    
+
+    
+    def normalize_neg1_pos1(X):
+        ''' Normalize the value of every feature into the [-1,+1] range. 
+            
+            X: n x d matrix of samples, excluding the x_0 = 1 feature. X can have negative numbers.
+            return: the n x d matrix of samples where each feature value belongs to [-1,1]
+        '''
+
+        n, d = X.shape
+        X_norm = X.astype('float64') # Have a copy of the data in float
+
+        for i in range(d):
+            col_min = min(X_norm[:,i])
+            col_max = max(X_norm[:,i])
+            col_mid = (col_max + col_min) / 2
+            gap = (col_max - col_min) / 2
+            if gap:
+                X_norm[:,i] = (X_norm[:,i] - col_mid) / gap
+            else: 
+                X_norm[:,i] = 0 #X_norm[:,i] - X_norm[:,i]
+
+        return X_norm
+
