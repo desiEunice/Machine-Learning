@@ -1,7 +1,7 @@
 # Perceptron Learning Algorithm (PLA) for Binary classification
 # Given a training data set where each training sample has a binary label, we want to learn a “line”, which is a hyperplane in a high dimensional space, 
 # to separate these training samples into two categories — one for each label. Later, we use the learned line to predict the label of future data elements.
-![Image Source: Lecture Notes](pla.png)
+# Please see attached image of algorithm pseudocode from lecture notes
 
 
 import numpy as np
