@@ -3,6 +3,7 @@
 # It supports the closed-form method and the gradient-descent based method. 
 # Author: Eunice Ofori-Addo
 
+# For nonlinear regression, first transform the samples to the Z-space, then do linear regression in the Z space.
 
 
 import numpy as np
