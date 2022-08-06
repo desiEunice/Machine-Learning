@@ -3,7 +3,7 @@
 
 
 # Various tools for data manipulation. 
-# Z transformation function. Support the pocket version for linearly unseparatable data. 
+# Z transformation function. Support the pocket version for linearly non separable data. 
 
 
 
