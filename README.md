@@ -11,3 +11,4 @@ This is a collection of my homework and projects that I did in my machine learni
 - Linear Regression
 - Logistic Regression 
 - Neural Network
+- And lastly CNN with Keras
