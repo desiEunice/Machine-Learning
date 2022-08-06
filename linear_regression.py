@@ -1,6 +1,6 @@
 
-# Implementation of the linear regression with L2 regularization.
-# It supports the closed-form method and the gradient-desecent based method. 
+# Implementation of the linear/nonlinear regression with L2 regularization.
+# It supports the closed-form method and the gradient-descent based method. 
 # Author: Eunice Ofori-Addo
 
 
